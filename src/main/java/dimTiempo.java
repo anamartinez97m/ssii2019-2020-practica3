@@ -3,12 +3,12 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "dim_tiempo")
-public class dimTIEMPO {
+public class dimTiempo {
 
     // Clave primaria (PK)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private String idTiempo;
 
     //Atributos
     private Date fecha;
@@ -20,12 +20,11 @@ public class dimTIEMPO {
     private boolean esFinde;
 
     //Constructor necesario para Spring
-    private dimTIEMPO() {
-
+    private dimTiempo() {
     }
 
     //Constructor de clase
-    public dimTIEMPO(Date fecha, int dia, String mes, int anio, int cuatrimestre, int diaSemana, boolean esFinde) {
+    public dimTiempo(Date fecha, int dia, String mes, int anio, int cuatrimestre, int diaSemana, boolean esFinde) {
         this.fecha = fecha;
         this.dia = dia;
         this.mes = mes;
@@ -36,12 +35,12 @@ public class dimTIEMPO {
     }
 
     //Getters y Setters
-    public String getId() {
-        return id;
+    public String getIdTiempo() {
+        return idTiempo;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdTiempo(String idTiempo) {
+        this.idTiempo = idTiempo;
     }
 
     public Date getFecha() {
@@ -103,8 +102,8 @@ public class dimTIEMPO {
     //toString() para imprimir la clase
     @Override
     public String toString() {
-        return "dimTIEMPO{" +
-                "id='" + id + '\'' +
+        return "dimTiempo{" +
+                "id='" + idTiempo + '\'' +
                 ", fecha=" + fecha +
                 ", dia=" + dia +
                 ", mes='" + mes + '\'' +

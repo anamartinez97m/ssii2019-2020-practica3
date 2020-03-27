@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>taller11-ssii</artifactId>
+    <artifactId>practica3-ssii</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <name>practica3-ssii</name>
@@ -20,10 +20,23 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.7.RELEASE</version>
+        <version>2.2.4.RELEASE</version>
     </parent>
 
     <dependencies>
+        <!-- Poder ejecutar bien en Java13 -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <!---->
 
         <!-- Spring Data REST -->
         <dependency>
@@ -43,12 +56,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.11</version>
         </dependency>
-
-       <!-- Flyway
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-        </dependency>-->
 
     </dependencies>
 

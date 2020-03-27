@@ -2,8 +2,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface RepositorioHospital extends CrudRepository<dimHOSPITAL, String> {
+public interface RepositorioHospital extends CrudRepository<dimHospital, String> {
 
-    List<dimHOSPITAL> findByNombre(String nombre);
-
+    List<dimHospital> findByNombre(String nombre);
 }

@@ -2,8 +2,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface RepositorioTiempo extends CrudRepository<dimTIEMPO, String> {
+public interface RepositorioTiempo extends CrudRepository<dimTiempo, String> {
 
-    List<dimTIEMPO> findByMes(String mes);
-
+    List<dimTiempo> findByMes(String mes);
 }

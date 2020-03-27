@@ -2,12 +2,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "dim_hospital")
-public class dimHOSPITAL {
+public class dimHospital {
 
     //Clave primaria (PK)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private String idHospital;
 
     //Atributos
     private String nombre;
@@ -16,12 +16,11 @@ public class dimHOSPITAL {
     private String gestor;
 
     //Constructor necesario para Spring
-    private dimHOSPITAL() {
-
+    private dimHospital() {
     }
 
     //Constructor de clase
-    public dimHOSPITAL(String nombre, short cpostal, String autopista, String gestor){
+    public dimHospital(String nombre, short cpostal, String autopista, String gestor){
         this.nombre = nombre;
         this.cpostal = cpostal;
         this.autopista = autopista;
@@ -29,12 +28,12 @@ public class dimHOSPITAL {
     }
 
     //Getters y Setters
-    public String getId() {
-        return id;
+    public String getIdHospital() {
+        return idHospital;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdHospital(String idHospital) {
+        this.idHospital = idHospital;
     }
 
     public String getNombre() {
@@ -72,8 +71,8 @@ public class dimHOSPITAL {
     //toString() para imprimir la clase
     @Override
     public String toString() {
-        return "dimHOSPITAL{" +
-                "id='" + id + '\'' +
+        return "dimHospital{" +
+                "id='" + idHospital + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", cpostal=" + cpostal +
                 ", autopista='" + autopista + '\'' +

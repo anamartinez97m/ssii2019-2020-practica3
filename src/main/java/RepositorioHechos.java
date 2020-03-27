@@ -2,8 +2,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface RepositorioHechos extends CrudRepository<tablaHECHOS, String> {
+public interface RepositorioHechos extends CrudRepository<tablaHechos, String> {
 
-    List<tablaHECHOS> findByDuracion(int duracion);
-
+    List<tablaHechos> findByDuracion(int duracion);
 }

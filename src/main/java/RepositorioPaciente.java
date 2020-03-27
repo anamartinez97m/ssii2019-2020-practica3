@@ -2,8 +2,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface RepositorioPaciente extends CrudRepository<dimPACIENTE, String> {
+public interface RepositorioPaciente extends CrudRepository<dimPaciente, String> {
 
-    List<dimPACIENTE> findByEdad(int edad);
-
+    List<dimPaciente> findByEdad(int edad);
 }

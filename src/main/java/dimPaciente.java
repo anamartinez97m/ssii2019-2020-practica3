@@ -2,28 +2,27 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "dim_paciente")
-public class dimPACIENTE {
+public class dimPaciente {
 
     //Clave primaria (PK)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private String idPaciente;
 
     //Atributos
     private int edad;
     private char sexo;
     private double IMC;
     private String formaFisica;
-    private boolean tabaquismo, alcoholismo, colesterol, hipertension, cardiopatía, reuma, EPOC, cancer;
+    private boolean tabaquismo, alcoholismo, colesterol, hipertension, cardiopatia, reuma, EPOC, cancer;
 
     //Constructor necesario para Spring
-    private dimPACIENTE() {
-
+    private dimPaciente() {
     }
 
     //Constructor de clase
-    public dimPACIENTE(int edad, char sexo, double IMC, String formaFisica, boolean tabaquismo, boolean alcoholismo,
-                       boolean colesterol, boolean hipertension, boolean cardiopatía, boolean reuma, boolean EPOC,
+    public dimPaciente(int edad, char sexo, double IMC, String formaFisica, boolean tabaquismo, boolean alcoholismo,
+                       boolean colesterol, boolean hipertension, boolean cardiopatia, boolean reuma, boolean EPOC,
                        boolean cancer) {
         this.edad = edad;
         this.sexo = sexo;
@@ -32,19 +31,19 @@ public class dimPACIENTE {
         this.tabaquismo = tabaquismo;
         this.colesterol = colesterol;
         this.hipertension = hipertension;
-        this.cardiopatía = cardiopatía;
+        this.cardiopatia = cardiopatia;
         this.reuma = reuma;
         this.EPOC = EPOC;
         this.cancer = cancer;
     }
 
     //Getters y Setters
-    public String getId() {
-        return id;
+    public String getIdPaciente() {
+        return idPaciente;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdPaciente(String idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
     public int getEdad() {
@@ -111,12 +110,12 @@ public class dimPACIENTE {
         this.hipertension = hipertension;
     }
 
-    public boolean isCardiopatía() {
-        return cardiopatía;
+    public boolean isCardiopatia() {
+        return cardiopatia;
     }
 
-    public void setCardiopatía(boolean cardiopatía) {
-        this.cardiopatía = cardiopatía;
+    public void setCardiopatia(boolean cardiopatia) {
+        this.cardiopatia = cardiopatia;
     }
 
     public boolean isReuma() {
@@ -146,8 +145,8 @@ public class dimPACIENTE {
     //toString() para imprimir la clase
     @Override
     public String toString() {
-        return "dimPACIENTE{" +
-                "id='" + id + '\'' +
+        return "dimPaciente{" +
+                "id='" + idPaciente + '\'' +
                 ", edad=" + edad +
                 ", sexo=" + sexo +
                 ", IMC=" + IMC +
@@ -156,7 +155,7 @@ public class dimPACIENTE {
                 ", alcoholismo=" + alcoholismo +
                 ", colesterol=" + colesterol +
                 ", hipertension=" + hipertension +
-                ", cardiopatía=" + cardiopatía +
+                ", cardiopatia=" + cardiopatia +
                 ", reuma=" + reuma +
                 ", EPOC=" + EPOC +
                 ", cancer=" + cancer +

@@ -2,7 +2,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tabla_hechos")
-public class tablaHECHOS {
+public class tablaHechos {
 
     //Clave primaria (PK)
     @Id
@@ -11,16 +11,16 @@ public class tablaHECHOS {
 
     //Claves ajenas (FK)
     @ManyToOne
-    @JoinColumn(name = "id")
-    private dimPACIENTE cliente_id;
+    @JoinColumn(name = "idPaciente")
+    private dimPaciente cliente_id;
 
     @ManyToOne
-    @JoinColumn(name = "id")
-    private dimHOSPITAL hospital_id;
+    @JoinColumn(name = "idHospital")
+    private dimHospital hospital_id;
 
     @ManyToOne
-    @JoinColumn(name = "id")
-    private dimTIEMPO fechaIngreso_id;
+    @JoinColumn(name = "idTiempo")
+    private dimTiempo fechaIngreso_id;
 
     //Atributos
     private int duracion;
@@ -29,12 +29,11 @@ public class tablaHECHOS {
     private String tratamiento;
 
     //Constructor necesario para Spring
-    private tablaHECHOS() {
-
+    private tablaHechos() {
     }
 
     //Constructor de clase
-    public tablaHECHOS(dimPACIENTE cliente_id, dimHOSPITAL hospital_id, dimTIEMPO fechaIngreso_id, int duracion,
+    public tablaHechos(dimPaciente cliente_id, dimHospital hospital_id, dimTiempo fechaIngreso_id, int duracion,
                        boolean UCI, boolean fallecido, String tratamiento) {
         this.cliente_id = cliente_id;
         this.hospital_id = hospital_id;
@@ -54,27 +53,27 @@ public class tablaHECHOS {
         this.id = id;
     }
 
-    public dimPACIENTE getCliente_id() {
+    public dimPaciente getCliente_id() {
         return cliente_id;
     }
 
-    public void setCliente_id(dimPACIENTE cliente_id) {
+    public void setCliente_id(dimPaciente cliente_id) {
         this.cliente_id = cliente_id;
     }
 
-    public dimHOSPITAL getHospital_id() {
+    public dimHospital getHospital_id() {
         return hospital_id;
     }
 
-    public void setHospital_id(dimHOSPITAL hospital_id) {
+    public void setHospital_id(dimHospital hospital_id) {
         this.hospital_id = hospital_id;
     }
 
-    public dimTIEMPO getFechaIngreso_id() {
+    public dimTiempo getFechaIngreso_id() {
         return fechaIngreso_id;
     }
 
-    public void setFechaIngreso_id(dimTIEMPO fechaIngreso_id) {
+    public void setFechaIngreso_id(dimTiempo fechaIngreso_id) {
         this.fechaIngreso_id = fechaIngreso_id;
     }
 
@@ -113,7 +112,7 @@ public class tablaHECHOS {
     //toString() para imprimir la clase
     @Override
     public String toString() {
-        return "tablaHECHOS{" +
+        return "tablaHechos{" +
                 "id='" + id + '\'' +
                 ", cliente_id=" + cliente_id +
                 ", hospital_id=" + hospital_id +

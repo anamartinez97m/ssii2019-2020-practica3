@@ -8,7 +8,7 @@ import prac3.servicios.ServicioPaciente;
 import prac3.servicios.ServicioTiempo;
 
 @Component
-public class ProcesData {
+public class ProcessData {
     @Autowired
     private ServicioHechos servicioHechos;
     @Autowired

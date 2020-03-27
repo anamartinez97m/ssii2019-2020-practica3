@@ -1,10 +1,10 @@
-package prac3;
+package prac3.entidades;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "dim_hospital")
-public class dimHospital {
+public class DimHospital {
 
     //Clave primaria (PK)
     @Id
@@ -18,11 +18,11 @@ public class dimHospital {
     private String gestor;
 
     //Constructor necesario para Spring
-    private dimHospital() {
+    private DimHospital() {
     }
 
     //Constructor de clase
-    public dimHospital(String nombre, short cpostal, String autopista, String gestor){
+    public DimHospital(String nombre, short cpostal, String autopista, String gestor){
         this.nombre = nombre;
         this.cpostal = cpostal;
         this.autopista = autopista;
@@ -73,7 +73,7 @@ public class dimHospital {
     //toString() para imprimir la clase
     @Override
     public String toString() {
-        return "prac3.dimHospital{" +
+        return "prac3.entidades.dimHospital{" +
                 "id='" + idHospital + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", cpostal=" + cpostal +

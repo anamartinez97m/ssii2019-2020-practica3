@@ -1,10 +1,10 @@
-package prac3;
+package prac3.entidades;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "dim_paciente")
-public class dimPaciente {
+public class DimPaciente {
 
     //Clave primaria (PK)
     @Id
@@ -12,18 +12,18 @@ public class dimPaciente {
     private String idPaciente;
 
     //Atributos
-    private int edad;
+    private short edad;
     private char sexo;
-    private double IMC;
+    private float IMC;
     private String formaFisica;
     private boolean tabaquismo, alcoholismo, colesterol, hipertension, cardiopatia, reuma, EPOC, cancer;
 
     //Constructor necesario para Spring
-    private dimPaciente() {
+    private DimPaciente() {
     }
 
     //Constructor de clase
-    public dimPaciente(int edad, char sexo, double IMC, String formaFisica, boolean tabaquismo, boolean alcoholismo,
+    public DimPaciente(short edad, char sexo, float IMC, String formaFisica, boolean tabaquismo, boolean alcoholismo,
                        boolean colesterol, boolean hipertension, boolean cardiopatia, boolean reuma, boolean EPOC,
                        boolean cancer) {
         this.edad = edad;
@@ -48,11 +48,11 @@ public class dimPaciente {
         this.idPaciente = idPaciente;
     }
 
-    public int getEdad() {
+    public short getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(short edad) {
         this.edad = edad;
     }
 
@@ -64,11 +64,11 @@ public class dimPaciente {
         this.sexo = sexo;
     }
 
-    public double getIMC() {
+    public float getIMC() {
         return IMC;
     }
 
-    public void setIMC(double IMC) {
+    public void setIMC(float IMC) {
         this.IMC = IMC;
     }
 
@@ -147,7 +147,7 @@ public class dimPaciente {
     //toString() para imprimir la clase
     @Override
     public String toString() {
-        return "prac3.dimPaciente{" +
+        return "prac3.entidades.dimPaciente{" +
                 "id='" + idPaciente + '\'' +
                 ", edad=" + edad +
                 ", sexo=" + sexo +

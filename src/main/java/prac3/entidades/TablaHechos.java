@@ -1,14 +1,10 @@
-package prac3;
-
-import prac3.dimHospital;
-import prac3.dimPaciente;
-import prac3.dimTiempo;
+package prac3.entidades;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "tabla_hechos")
-public class tablaHechos {
+public class TablaHechos {
 
     //Clave primaria (PK)
     @Id
@@ -18,15 +14,15 @@ public class tablaHechos {
     //Claves ajenas (FK)
     @ManyToOne
     @JoinColumn(name = "idPaciente")
-    private dimPaciente cliente_id;
+    private DimPaciente paciente_id;
 
     @ManyToOne
     @JoinColumn(name = "idHospital")
-    private dimHospital hospital_id;
+    private DimHospital hospital_id;
 
     @ManyToOne
     @JoinColumn(name = "idTiempo")
-    private dimTiempo fechaIngreso_id;
+    private DimTiempo fechaIngreso_id;
 
     //Atributos
     private int duracion;
@@ -35,13 +31,13 @@ public class tablaHechos {
     private String tratamiento;
 
     //Constructor necesario para Spring
-    private tablaHechos() {
+    private TablaHechos() {
     }
 
     //Constructor de clase
-    public tablaHechos(dimPaciente cliente_id, dimHospital hospital_id, dimTiempo fechaIngreso_id, int duracion,
+    public TablaHechos(DimPaciente paciente_id, DimHospital hospital_id, DimTiempo fechaIngreso_id, int duracion,
                        boolean UCI, boolean fallecido, String tratamiento) {
-        this.cliente_id = cliente_id;
+        this.paciente_id = paciente_id;
         this.hospital_id = hospital_id;
         this.fechaIngreso_id = fechaIngreso_id;
         this.duracion = duracion;
@@ -59,27 +55,27 @@ public class tablaHechos {
         this.id = id;
     }
 
-    public dimPaciente getCliente_id() {
-        return cliente_id;
+    public DimPaciente getPaciente_id() {
+        return paciente_id;
     }
 
-    public void setCliente_id(dimPaciente cliente_id) {
-        this.cliente_id = cliente_id;
+    public void setPaciente_id(DimPaciente cliente_id) {
+        this.paciente_id = cliente_id;
     }
 
-    public dimHospital getHospital_id() {
+    public DimHospital getHospital_id() {
         return hospital_id;
     }
 
-    public void setHospital_id(dimHospital hospital_id) {
+    public void setHospital_id(DimHospital hospital_id) {
         this.hospital_id = hospital_id;
     }
 
-    public dimTiempo getFechaIngreso_id() {
+    public DimTiempo getFechaIngreso_id() {
         return fechaIngreso_id;
     }
 
-    public void setFechaIngreso_id(dimTiempo fechaIngreso_id) {
+    public void setFechaIngreso_id(DimTiempo fechaIngreso_id) {
         this.fechaIngreso_id = fechaIngreso_id;
     }
 
@@ -118,9 +114,9 @@ public class tablaHechos {
     //toString() para imprimir la clase
     @Override
     public String toString() {
-        return "prac3.tablaHechos{" +
+        return "prac3.entidades.tablaHechos{" +
                 "id='" + id + '\'' +
-                ", cliente_id=" + cliente_id +
+                ", paciente_id=" + paciente_id +
                 ", hospital_id=" + hospital_id +
                 ", fechaIngreso_id=" + fechaIngreso_id +
                 ", duracion=" + duracion +

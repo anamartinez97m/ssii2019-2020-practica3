@@ -1,11 +1,11 @@
-package prac3;
+package prac3.entidades;
 
 import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
 @Table(name = "dim_tiempo")
-public class dimTiempo {
+public class DimTiempo {
 
     // Clave primaria (PK)
     @Id
@@ -14,19 +14,19 @@ public class dimTiempo {
 
     //Atributos
     private Date fecha;
-    private int dia;
+    private short dia;
     private String mes;
-    private int anio;
-    private int cuatrimestre;
-    private int diaSemana;
+    private short anio;
+    private short cuatrimestre;
+    private String diaSemana;
     private boolean esFinde;
 
     //Constructor necesario para Spring
-    private dimTiempo() {
+    private DimTiempo() {
     }
 
     //Constructor de clase
-    public dimTiempo(Date fecha, int dia, String mes, int anio, int cuatrimestre, int diaSemana, boolean esFinde) {
+    public DimTiempo(Date fecha, short dia, String mes, short anio, short cuatrimestre, String diaSemana, boolean esFinde) {
         this.fecha = fecha;
         this.dia = dia;
         this.mes = mes;
@@ -53,11 +53,11 @@ public class dimTiempo {
         this.fecha = fecha;
     }
 
-    public int getDia() {
+    public short getDia() {
         return dia;
     }
 
-    public void setDia(int dia) {
+    public void setDia(short dia) {
         this.dia = dia;
     }
 
@@ -69,27 +69,27 @@ public class dimTiempo {
         this.mes = mes;
     }
 
-    public int getAnio() {
+    public short getAnio() {
         return anio;
     }
 
-    public void setAnio(int anio) {
+    public void setAnio(short anio) {
         this.anio = anio;
     }
 
-    public int getCuatrimestre() {
+    public short getCuatrimestre() {
         return cuatrimestre;
     }
 
-    public void setCuatrimestre(int cuatrimestre) {
+    public void setCuatrimestre(short cuatrimestre) {
         this.cuatrimestre = cuatrimestre;
     }
 
-    public int getDiaSemana() {
+    public String getDiaSemana() {
         return diaSemana;
     }
 
-    public void setDiaSemana(int diaSemana) {
+    public void setDiaSemana(String diaSemana) {
         this.diaSemana = diaSemana;
     }
 
@@ -104,7 +104,7 @@ public class dimTiempo {
     //toString() para imprimir la clase
     @Override
     public String toString() {
-        return "prac3.dimTiempo{" +
+        return "prac3.entidades.dimTiempo{" +
                 "id='" + idTiempo + '\'' +
                 ", fecha=" + fecha +
                 ", dia=" + dia +

@@ -1,3 +1,5 @@
+package prac3;
+
 import javax.persistence.*;
 
 @Entity
@@ -145,7 +147,7 @@ public class dimPaciente {
     //toString() para imprimir la clase
     @Override
     public String toString() {
-        return "dimPaciente{" +
+        return "prac3.dimPaciente{" +
                 "id='" + idPaciente + '\'' +
                 ", edad=" + edad +
                 ", sexo=" + sexo +

@@ -1,3 +1,5 @@
+package prac3;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -102,7 +104,7 @@ public class dimTiempo {
     //toString() para imprimir la clase
     @Override
     public String toString() {
-        return "dimTiempo{" +
+        return "prac3.dimTiempo{" +
                 "id='" + idTiempo + '\'' +
                 ", fecha=" + fecha +
                 ", dia=" + dia +

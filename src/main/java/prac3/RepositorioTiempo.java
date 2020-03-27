@@ -1,4 +1,7 @@
+package prac3;
+
 import org.springframework.data.repository.CrudRepository;
+import prac3.dimTiempo;
 
 import java.util.List;
 

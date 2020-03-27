@@ -1,3 +1,9 @@
+package prac3;
+
+import prac3.dimHospital;
+import prac3.dimPaciente;
+import prac3.dimTiempo;
+
 import javax.persistence.*;
 
 @Entity
@@ -112,7 +118,7 @@ public class tablaHechos {
     //toString() para imprimir la clase
     @Override
     public String toString() {
-        return "tablaHechos{" +
+        return "prac3.tablaHechos{" +
                 "id='" + id + '\'' +
                 ", cliente_id=" + cliente_id +
                 ", hospital_id=" + hospital_id +

@@ -1,3 +1,5 @@
+package prac3;
+
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

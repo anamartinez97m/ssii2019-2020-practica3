@@ -12,16 +12,16 @@ public interface RepositorioTiempo extends CrudRepository<DimTiempo, String> {
 
     List<DimTiempo> findByFecha(Date fecha);
     List<DimTiempo> findByDia(short dia);
-    List<DimTiempo> findByMes(String mes);
+    List<DimTiempo> findByMes(short mes);
     List<DimTiempo> findByAnio(short anio);
     List<DimTiempo> findByCuatrimestre(short cuatrimestre);
     List<DimTiempo> findByDiaSemana(String diaSemana);
-    List<DimTiempo> findByEsFinde(boolean esFinde);
+    List<DimTiempo> findByEsFinde(byte esFinde);
     DimTiempo findByFechaAndDiaAndMesAndAnioAndCuatrimestreAndDiaSemanaAndEsFinde(Date fecha,
                                                                                   short dia,
-                                                                                  String mes,
+                                                                                  short mes,
                                                                                   short anio,
                                                                                   short cuatrimestre,
                                                                                   String diaSemana,
-                                                                                  boolean esFinde);
+                                                                                  byte esFinde);
 }

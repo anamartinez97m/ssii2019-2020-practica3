@@ -9,24 +9,30 @@ public class DimTiempo {
 
     // Clave primaria (PK)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String idTiempo;
 
     //Atributos
+    @Column
     private Date fecha;
+    @Column
     private short dia;
-    private String mes;
+    @Column
+    private short mes;
+    @Column
     private short anio;
+    @Column
     private short cuatrimestre;
+    @Column
     private String diaSemana;
-    private boolean esFinde;
+    @Column
+    private byte esFinde;
 
     //Constructor necesario para Spring
-    private DimTiempo() {
+    public DimTiempo() {
     }
 
     //Constructor de clase
-    public DimTiempo(Date fecha, short dia, String mes, short anio, short cuatrimestre, String diaSemana, boolean esFinde) {
+    public DimTiempo(Date fecha, short dia, short mes, short anio, short cuatrimestre, String diaSemana, byte esFinde) {
         this.fecha = fecha;
         this.dia = dia;
         this.mes = mes;
@@ -61,11 +67,11 @@ public class DimTiempo {
         this.dia = dia;
     }
 
-    public String getMes() {
+    public short getMes() {
         return mes;
     }
 
-    public void setMes(String mes) {
+    public void setMes(short mes) {
         this.mes = mes;
     }
 
@@ -93,11 +99,11 @@ public class DimTiempo {
         this.diaSemana = diaSemana;
     }
 
-    public boolean isEsFinde() {
+    public byte isEsFinde() {
         return esFinde;
     }
 
-    public void setEsFinde(boolean esFinde) {
+    public void setEsFinde(byte esFinde) {
         this.esFinde = esFinde;
     }
 

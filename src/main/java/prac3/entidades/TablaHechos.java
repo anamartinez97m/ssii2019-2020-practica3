@@ -31,7 +31,7 @@ public class TablaHechos {
     private String tratamiento;
 
     //Constructor necesario para Spring
-    private TablaHechos() {
+    public TablaHechos() {
     }
 
     //Constructor de clase

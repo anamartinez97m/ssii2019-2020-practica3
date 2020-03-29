@@ -10,8 +10,8 @@ import java.util.List;
 public interface RepositorioHospital extends CrudRepository<DimHospital, String> {
 
     List<DimHospital> findByNombre(String nombre);
-    List<DimHospital> findByCpostal(short cpostal);
+    List<DimHospital> findByCpostal(int cpostal);
     List<DimHospital> findByAutopista(String autopista);
     List<DimHospital> findByGestor(String gestor);
-    DimHospital findByNombreAndCpostal(String nombre, short cpostal);
+    DimHospital findByNombreAndCpostal(String nombre, int cpostal);
 }

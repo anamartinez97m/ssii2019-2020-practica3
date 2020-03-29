@@ -12,14 +12,18 @@ public class DimPaciente {
     private String idPaciente;
 
     //Atributos
+    @Column
     private short edad;
+    @Column
     private char sexo;
+    @Column
     private float IMC;
+    @Column
     private String formaFisica;
     private boolean tabaquismo, alcoholismo, colesterol, hipertension, cardiopatia, reuma, EPOC, cancer;
 
     //Constructor necesario para Spring
-    private DimPaciente() {
+    public DimPaciente() {
     }
 
     //Constructor de clase

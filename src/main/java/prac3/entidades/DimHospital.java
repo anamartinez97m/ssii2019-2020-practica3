@@ -1,5 +1,7 @@
 package prac3.entidades;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,21 +10,24 @@ public class DimHospital {
 
     //Clave primaria (PK)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String idHospital;
 
     //Atributos
+    @Column
     private String nombre;
-    private short cpostal;
+    @Column
+    private int cpostal;
+    @Column
     private String autopista;
+    @Column
     private String gestor;
 
     //Constructor necesario para Spring
-    private DimHospital() {
+    public DimHospital() {
     }
 
     //Constructor de clase
-    public DimHospital(String nombre, short cpostal, String autopista, String gestor){
+    public DimHospital(String nombre, int cpostal, String autopista, String gestor){
         this.nombre = nombre;
         this.cpostal = cpostal;
         this.autopista = autopista;
@@ -46,11 +51,11 @@ public class DimHospital {
         this.nombre = nombre;
     }
 
-    public short getCpostal() {
+    public int getCpostal() {
         return cpostal;
     }
 
-    public void setCpostal(short cpostal) {
+    public void setCpostal(int cpostal) {
         this.cpostal = cpostal;
     }
 

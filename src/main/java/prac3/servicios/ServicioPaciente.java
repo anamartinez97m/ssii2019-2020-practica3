@@ -17,6 +17,10 @@ public class ServicioPaciente {
         return (List<DimPaciente>) repositorioPaciente.findAll();
     }
 
+    public DimPaciente getPacienteById(String id) {
+        return repositorioPaciente.findByIdPaciente(id);
+    }
+
     public void guardarPaciente(DimPaciente p) {
         repositorioPaciente.save(p);
     }

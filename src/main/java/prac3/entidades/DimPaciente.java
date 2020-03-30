@@ -8,7 +8,6 @@ public class DimPaciente {
 
     //Clave primaria (PK)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String idPaciente;
 
     //Atributos
@@ -19,7 +18,7 @@ public class DimPaciente {
     @Column
     private float IMC;
     @Column
-    private String formaFisica;
+    private short formaFisica;
     private boolean tabaquismo, alcoholismo, colesterol, hipertension, cardiopatia, reuma, EPOC, cancer;
 
     //Constructor necesario para Spring
@@ -27,7 +26,7 @@ public class DimPaciente {
     }
 
     //Constructor de clase
-    public DimPaciente(short edad, char sexo, float IMC, String formaFisica, boolean tabaquismo, boolean alcoholismo,
+    public DimPaciente(short edad, char sexo, float IMC, short formaFisica, boolean tabaquismo, boolean alcoholismo,
                        boolean colesterol, boolean hipertension, boolean cardiopatia, boolean reuma, boolean EPOC,
                        boolean cancer) {
         this.edad = edad;
@@ -35,6 +34,7 @@ public class DimPaciente {
         this.IMC = IMC;
         this.formaFisica = formaFisica;
         this.tabaquismo = tabaquismo;
+        this.alcoholismo = alcoholismo;
         this.colesterol = colesterol;
         this.hipertension = hipertension;
         this.cardiopatia = cardiopatia;
@@ -76,11 +76,11 @@ public class DimPaciente {
         this.IMC = IMC;
     }
 
-    public String getFormaFisica() {
+    public short getFormaFisica() {
         return formaFisica;
     }
 
-    public void setFormaFisica(String formaFisica) {
+    public void setFormaFisica(short formaFisica) {
         this.formaFisica = formaFisica;
     }
 

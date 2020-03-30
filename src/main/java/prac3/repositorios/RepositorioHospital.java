@@ -13,5 +13,7 @@ public interface RepositorioHospital extends CrudRepository<DimHospital, String>
     List<DimHospital> findByCpostal(int cpostal);
     List<DimHospital> findByAutopista(String autopista);
     List<DimHospital> findByGestor(String gestor);
+
+    DimHospital findByIdHospital(String idHospital);
     DimHospital findByNombreAndCpostal(String nombre, int cpostal);
 }

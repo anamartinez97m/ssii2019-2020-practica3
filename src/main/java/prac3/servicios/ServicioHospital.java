@@ -17,6 +17,10 @@ public class ServicioHospital {
         return (List<DimHospital>) repositorioHospital.findAll();
     }
 
+    public DimHospital getHospitalById(String id) {
+        return repositorioHospital.findByIdHospital(id);
+    }
+
     public void guardarHospital(DimHospital h) {
         repositorioHospital.save(h);
     }

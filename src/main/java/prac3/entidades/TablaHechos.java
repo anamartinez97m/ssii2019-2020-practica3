@@ -8,7 +8,6 @@ public class TablaHechos {
 
     //Clave primaria (PK)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     //Claves ajenas (FK)
@@ -28,7 +27,7 @@ public class TablaHechos {
     private int duracion;
     private boolean UCI;
     private boolean fallecido;
-    private String tratamiento;
+    private short tratamiento;
 
     //Constructor necesario para Spring
     public TablaHechos() {
@@ -36,7 +35,7 @@ public class TablaHechos {
 
     //Constructor de clase
     public TablaHechos(DimPaciente paciente_id, DimHospital hospital_id, DimTiempo fechaIngreso_id, int duracion,
-                       boolean UCI, boolean fallecido, String tratamiento) {
+                       boolean UCI, boolean fallecido, short tratamiento) {
         this.paciente_id = paciente_id;
         this.hospital_id = hospital_id;
         this.fechaIngreso_id = fechaIngreso_id;
@@ -103,11 +102,11 @@ public class TablaHechos {
         this.fallecido = fallecido;
     }
 
-    public String getTratamiento() {
+    public short getTratamiento() {
         return tratamiento;
     }
 
-    public void setTratamiento(String tratamiento) {
+    public void setTratamiento(short tratamiento) {
         this.tratamiento = tratamiento;
     }
 

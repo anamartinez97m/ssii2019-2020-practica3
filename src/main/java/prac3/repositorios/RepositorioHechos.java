@@ -12,5 +12,8 @@ public interface RepositorioHechos extends CrudRepository<TablaHechos, String> {
     List<TablaHechos> findByDuracion(int duracion);
     List<TablaHechos> findByUCI(boolean uci);
     List<TablaHechos> findByFallecido(boolean fallecido);
-    List<TablaHechos> findByTratamiento(String tratamiento);
+    List<TablaHechos> findByTratamiento(short tratamiento);
+
+
+    TablaHechos findByDuracionAndUCIAndFallecidoAndTratamiento(int duracion, boolean uci, boolean fallecido, short tratamiento);
 }

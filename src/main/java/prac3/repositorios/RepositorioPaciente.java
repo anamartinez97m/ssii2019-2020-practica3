@@ -12,7 +12,7 @@ public interface RepositorioPaciente extends CrudRepository<DimPaciente, String>
     List<DimPaciente> findByEdad(short edad);
     List<DimPaciente> findBySexo(char sexo);
     List<DimPaciente> findByIMC(float IMC);
-    List<DimPaciente> findByFormaFisica(String formaFisica);
+    List<DimPaciente> findByFormaFisica(short formaFisica);
     List<DimPaciente> findByTabaquismo(boolean tabaquismo);
     List<DimPaciente> findByAlcoholismo(boolean alcoholismo);
     List<DimPaciente> findByColesterol(boolean colesterol);
@@ -20,6 +20,8 @@ public interface RepositorioPaciente extends CrudRepository<DimPaciente, String>
     List<DimPaciente> findByCardiopatia(boolean cardiopatia);
     List<DimPaciente> findByReuma(boolean reuma);
     List<DimPaciente> findByEPOC(boolean EPOC);
-    List<DimPaciente> findBycancer(boolean cancer);
+    List<DimPaciente> findByCancer(boolean cancer);
+
+    DimPaciente findByIdPaciente(String idPaciente);
     DimPaciente findByEdadAndSexoAndIMC(short edad, char sexo, float IMC);
 }

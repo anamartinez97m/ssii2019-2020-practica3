@@ -17,8 +17,8 @@ public class ServicioPaciente {
         return (List<DimPaciente>) repositorioPaciente.findAll();
     }
 
-    public DimPaciente getPacienteById(String id) {
-        return repositorioPaciente.findByIdPaciente(id);
+    public DimPaciente getPacienteById(int idPaciente) {
+        return repositorioPaciente.findByIdPaciente(idPaciente);
     }
 
     public void guardarPaciente(DimPaciente p) {
@@ -28,10 +28,10 @@ public class ServicioPaciente {
     public String comprobarPaciente(DimPaciente p) {
         DimPaciente paciente = repositorioPaciente.findByEdadAndSexoAndIMC(p.getEdad(), p.getSexo(), p.getIMC());
         if (paciente != null) {
-            String id = paciente.getIdPaciente();
+            String id = paciente.getId();
             return id;
         } else {
-            return repositorioPaciente.save(p).getIdPaciente();
+            return repositorioPaciente.save(p).getId();
         }
     }
 

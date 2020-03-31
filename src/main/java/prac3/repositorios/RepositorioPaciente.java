@@ -22,6 +22,6 @@ public interface RepositorioPaciente extends CrudRepository<DimPaciente, String>
     List<DimPaciente> findByEPOC(boolean EPOC);
     List<DimPaciente> findByCancer(boolean cancer);
 
-    DimPaciente findByIdPaciente(String idPaciente);
+    DimPaciente findByIdPaciente(int idPaciente);
     DimPaciente findByEdadAndSexoAndIMC(short edad, char sexo, float IMC);
 }

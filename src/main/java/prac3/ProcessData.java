@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Iterator;
+import java.util.List;
 
 @Component
 public class ProcessData {
@@ -78,7 +80,7 @@ public class ProcessData {
                 line = br.readLine();
             }
         } catch (IOException e) {
-            System.err.println("Hubo un problema con el fichero");
+            System.err.println("Hubo un problema con el fichero dimLUGAR.csv");
         }
 
         System.out.println("DATOS DE dimLUGAR.csv CARGADOS CON EXITO.");
@@ -103,11 +105,12 @@ public class ProcessData {
                 //Cargar datos de dimTIEMPO.csv
                 String id = cadena[0];
                 String fecha = cadena[1];
-                Date date = guardarFecha(fecha);
-                short dia = Short.parseShort(cadena[2]);
-                short mes = Short.parseShort(cadena[3]);
-                short anio = Short.parseShort(cadena[4]);
-                short cuatrimestre = Short.parseShort(cadena[5]);;
+                SimpleDateFormat formatoFecha = new SimpleDateFormat(formatoFecha(fecha));
+                Date date = new Date(formatoFecha.parse(fecha).getTime());
+                int dia = Integer.parseInt(cadena[2]);
+                int mes = Integer.parseInt(cadena[3]);
+                int anio = Integer.parseInt(cadena[4]);
+                int cuatrimestre = Integer.parseInt(cadena[5]);;
                 String diaSemana = cadena[6];
                 byte esFinde = Byte.parseByte(cadena[7]);
 
@@ -124,8 +127,11 @@ public class ProcessData {
                 //Lee la siguiente linea
                 line = br.readLine();
             }
-        } catch (IOException | ParseException e) {
-            System.err.println("Hubo un problema con el fichero");
+        } catch (IOException e) {
+            System.err.println("Hubo un problema con el fichero dimTIEMPO.csv");
+        } catch (ParseException pe) {
+            System.err.println("Hubo un problema con la conversion de la fecha:");
+            System.err.println(pe);
         }
 
         System.out.println("DATOS DE dimTIEMPO.csv CARGADOS CON EXITO.");
@@ -151,26 +157,26 @@ public class ProcessData {
                 //Cargar datos de Pi.csv
                 String id = cadena[0];
                 Short edad = Short.parseShort(cadena[1]);
-                char sexo = (cadena[2].equals("0"))?'H':'M';
+                char sexo = convertirDatoChar(cadena[2]);
                 float IMC = Float.parseFloat(cadena[3]);
                 short formaFisica = Short.parseShort(cadena[4]);
-                boolean tabaquismo = (cadena[5].equals("0"))?false:true;
-                boolean alcoholismo = (cadena[6].equals("0"))?false:true;
-                boolean colesterol = (cadena[7].equals("0"))?false:true;
-                boolean hipertension = (cadena[8].equals("0"))?false:true;
-                boolean cardiopatia = (cadena[9].equals("0"))?false:true;
-                boolean reuma = (cadena[10].equals("0"))?false:true;
-                boolean EPOC = (cadena[11].equals("0"))?false:true;
-                boolean cancer = (cadena[12].equals("0"))?false:true;
+                boolean tabaquismo = convertirDatoBooleano(cadena[5]);
+                boolean alcoholismo = convertirDatoBooleano(cadena[6]);;
+                boolean colesterol = convertirDatoBooleano(cadena[7]);;
+                boolean hipertension = convertirDatoBooleano(cadena[8]);;
+                boolean cardiopatia = convertirDatoBooleano(cadena[9]);;
+                boolean reuma = convertirDatoBooleano(cadena[10]);;
+                boolean EPOC = convertirDatoBooleano(cadena[11]);;
+                boolean cancer = convertirDatoBooleano(cadena[12]);;
 
                 //Guardar datos de Pi.csv
                 DimPaciente paciente = new DimPaciente(edad, sexo, IMC, formaFisica, tabaquismo, alcoholismo,
                                                         colesterol, hipertension, cardiopatia, reuma, EPOC, cancer);
-                paciente.setIdPaciente(id);
+                paciente.setId(id);
 
                 //Comprueba si existe el dato de paciente y obtiene su id
                 String p = servicioPaciente.comprobarPaciente(paciente);
-                paciente.setIdPaciente(p);
+                paciente.setId(p);
 
                 servicioPaciente.guardarPaciente(paciente);
 
@@ -188,6 +194,9 @@ public class ProcessData {
     public void processTablaHechos(String file) {
         System.out.println("CARGANDO DATOS DE "+file+".csv");
 
+        List<DimPaciente> pacienteList = servicioPaciente.getPaciente();
+        Iterator<DimPaciente> it = pacienteList.iterator();
+
         //Carga de datos de Hi.csv
         try {
             FileReader fr = new FileReader("src/main/resources/data/"+file+".csv");
@@ -197,18 +206,19 @@ public class ProcessData {
             //Leer siguiente linea ignorando la primera del bucle (cabecera de la tabla)
             line = br.readLine();
 
-            while (line != null) {
+            while (line != null && it.hasNext()) {
                 String resultado = line;
                 String[] cadena = resultado.split(";");
 
                 //Cargar datos de Hi.csv
                 String id = cadena[0];
-                DimPaciente paciente_id = servicioPaciente.getPacienteById(cadena[1]);
+                DimPaciente paciente_id = asignarIdPaciente(Integer.parseInt(cadena[1]), it.next());
                 DimHospital hospital_id = servicioHospital.getHospitalById(file);
-                DimTiempo fechaIngreso_id = servicioTiempo.getTiempoByFecha(guardarFecha(cadena[2]));
+                DimTiempo fechaIngreso_id = servicioTiempo.getTiempoByDiaAndMesAndAnioAndCuatrimestre(cadena[2]);
+                System.out.println(fechaIngreso_id);
                 int duracion = Integer.parseInt(cadena[3]);
-                boolean UCI = (cadena[4].equals("No"))?false:true;
-                boolean fallecido = (cadena[5].equals("No"))?false:true;
+                boolean UCI = convertirDatoBooleano(cadena[4]);
+                boolean fallecido = convertirDatoBooleano(cadena[5]);
                 short tratamiento = Short.parseShort(cadena[6]);
 
                 //Guardar datos de Hi.csv
@@ -225,18 +235,40 @@ public class ProcessData {
                 line = br.readLine();
             }
 
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             System.err.println("Hubo un error con el fichero "+file+".csv");
         }
 
         System.out.println("DATOS DE "+file+".csv CARGADOS CON EXITO.");
     }
 
-    public static Date guardarFecha(String fecha) throws ParseException {
-        String patron = "dd/MM/yyyy";
-        SimpleDateFormat formatoFecha = new SimpleDateFormat(patron);
-        java.util.Date utilDate = new java.util.Date();
-        Date date = new Date(utilDate.getTime());
-        return date;
+    public DimPaciente asignarIdPaciente(int id, DimPaciente p) {
+        p.setIdPaciente(id);
+        servicioPaciente.guardarPaciente(p);
+        return p;
+    }
+
+    public boolean convertirDatoBooleano(String cadena) {
+        if (cadena.contains("N") || cadena.contains("S")) {
+           return (cadena.contains("S"))?true:false;
+        } else {
+            return (Integer.parseInt(cadena) == 1)?true:false;
+        }
+    }
+
+    public char convertirDatoChar(String cadena) {
+        if (cadena.contains("V") || cadena.contains("M")) {
+            return (cadena.equals("M"))?'M':'H';
+        } else {
+            return (Integer.parseInt(cadena) == 1)?'M':'H';
+        }
+    }
+
+    public String formatoFecha(String fecha){
+        if (fecha.length() >  8) {
+            return "dd/MM/yyyy";
+        } else {
+            return "dd/MM/yy";
+        }
     }
 }

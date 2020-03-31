@@ -10,24 +10,23 @@ import java.util.List;
 @RepositoryRestResource
 public interface RepositorioTiempo extends CrudRepository<DimTiempo, String> {
 
-    List<DimTiempo> findAllByFecha(Date fecha);
-    List<DimTiempo> findByDia(short dia);
-    List<DimTiempo> findByMes(short mes);
-    List<DimTiempo> findByAnio(short anio);
-    List<DimTiempo> findByCuatrimestre(short cuatrimestre);
+    List<DimTiempo> findByFecha(Date fecha);
+    List<DimTiempo> findByDia(int dia);
+    List<DimTiempo> findByMes(int mes);
+    List<DimTiempo> findByAnio(int anio);
+    List<DimTiempo> findByCuatrimestre(int cuatrimestre);
     List<DimTiempo> findByDiaSemana(String diaSemana);
     List<DimTiempo> findByEsFinde(byte esFinde);
 
-    DimTiempo findByFechaAndDiaAndMesAndAnioAndCuatrimestre(Date fecha,
-                                                            short dia,
-                                                            short mes,
-                                                            short anio,
-                                                            short cuatrimestre);
+    DimTiempo findByDiaAndMesAndAnioAndCuatrimestre(int dia,
+                                                    int mes,
+                                                    int anio,
+                                                    int cuatrimestre);
     DimTiempo findByFechaAndDiaAndMesAndAnioAndCuatrimestreAndDiaSemanaAndEsFinde(Date fecha,
-                                                                                  short dia,
-                                                                                  short mes,
-                                                                                  short anio,
-                                                                                  short cuatrimestre,
+                                                                                  int dia,
+                                                                                  int mes,
+                                                                                  int anio,
+                                                                                  int cuatrimestre,
                                                                                   String diaSemana,
                                                                                   byte esFinde);
 }

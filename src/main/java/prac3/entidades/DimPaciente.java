@@ -8,9 +8,11 @@ public class DimPaciente {
 
     //Clave primaria (PK)
     @Id
-    private String idPaciente;
+    private String id;
 
     //Atributos
+    @Column
+    private int idPaciente;
     @Column
     private short edad;
     @Column
@@ -29,6 +31,7 @@ public class DimPaciente {
     public DimPaciente(short edad, char sexo, float IMC, short formaFisica, boolean tabaquismo, boolean alcoholismo,
                        boolean colesterol, boolean hipertension, boolean cardiopatia, boolean reuma, boolean EPOC,
                        boolean cancer) {
+        this.idPaciente = idPaciente;
         this.edad = edad;
         this.sexo = sexo;
         this.IMC = IMC;
@@ -44,11 +47,19 @@ public class DimPaciente {
     }
 
     //Getters y Setters
-    public String getIdPaciente() {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getIdPaciente() {
         return idPaciente;
     }
 
-    public void setIdPaciente(String idPaciente) {
+    public void setIdPaciente(int idPaciente) {
         this.idPaciente = idPaciente;
     }
 
@@ -149,14 +160,16 @@ public class DimPaciente {
     }
 
     //toString() para imprimir la clase
+
     @Override
     public String toString() {
-        return "prac3.entidades.dimPaciente{" +
-                "id='" + idPaciente + '\'' +
+        return "DimPaciente{" +
+                "id='" + id + '\'' +
+                ", idPaciente=" + idPaciente +
                 ", edad=" + edad +
                 ", sexo=" + sexo +
                 ", IMC=" + IMC +
-                ", formaFisica='" + formaFisica + '\'' +
+                ", formaFisica=" + formaFisica +
                 ", tabaquismo=" + tabaquismo +
                 ", alcoholismo=" + alcoholismo +
                 ", colesterol=" + colesterol +

@@ -15,13 +15,13 @@ public class DimTiempo {
     @Column
     private Date fecha;
     @Column
-    private short dia;
+    private int dia;
     @Column
-    private short mes;
+    private int mes;
     @Column
-    private short anio;
+    private int anio;
     @Column
-    private short cuatrimestre;
+    private int cuatrimestre;
     @Column
     private String diaSemana;
     @Column
@@ -32,7 +32,7 @@ public class DimTiempo {
     }
 
     //Constructor de clase
-    public DimTiempo(Date fecha, short dia, short mes, short anio, short cuatrimestre, String diaSemana, byte esFinde) {
+    public DimTiempo(Date fecha, int dia, int mes, int anio, int cuatrimestre, String diaSemana, byte esFinde) {
         this.fecha = fecha;
         this.dia = dia;
         this.mes = mes;
@@ -59,35 +59,35 @@ public class DimTiempo {
         this.fecha = fecha;
     }
 
-    public short getDia() {
+    public int getDia() {
         return dia;
     }
 
-    public void setDia(short dia) {
+    public void setDia(int dia) {
         this.dia = dia;
     }
 
-    public short getMes() {
+    public int getMes() {
         return mes;
     }
 
-    public void setMes(short mes) {
+    public void setMes(int mes) {
         this.mes = mes;
     }
 
-    public short getAnio() {
+    public int getAnio() {
         return anio;
     }
 
-    public void setAnio(short anio) {
+    public void setAnio(int anio) {
         this.anio = anio;
     }
 
-    public short getCuatrimestre() {
+    public int getCuatrimestre() {
         return cuatrimestre;
     }
 
-    public void setCuatrimestre(short cuatrimestre) {
+    public void setCuatrimestre(int cuatrimestre) {
         this.cuatrimestre = cuatrimestre;
     }
 

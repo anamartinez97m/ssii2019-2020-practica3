@@ -28,8 +28,7 @@ public class ServicioHospital {
     public String comprobarHospital(DimHospital h) {
         DimHospital hospital = repositorioHospital.findByNombreAndCpostal(h.getNombre(), h.getCpostal());
         if (hospital != null) {
-            String id = hospital.getIdHospital();
-            return id;
+            return hospital.getIdHospital();
         } else {
             return repositorioHospital.save(h).getIdHospital();
         }

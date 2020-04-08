@@ -57,6 +57,12 @@
             <version>8.0.11</version>
         </dependency>
 
+        <!-- Thymeleaf para iniciar front-end con template -->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>-->
+
     </dependencies>
 
 </project>

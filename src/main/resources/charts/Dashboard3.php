@@ -1,12 +1,12 @@
 <?php
-	$con = mysqli_connect('localhost', 'newuser', 'URJC2019!', 'test', '3306');
+	$con = mysqli_connect('localhost', 'newuser', 'URJC2019!', 'practica3', '3306');
 ?>
 
 <!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>SSII 2019 -- Sesion Practica 16</title>
+    <title>Dashboards Practica 3</title>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -15,27 +15,32 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <script type="text/javascript">
-		google.charts.load("current", {packages:["table"]});
-		google.setOnLoadCallback(drawTable);
+		google.charts.load("current", {packages:["corechart"]});
+		google.setOnLoadCallback(drawChart);
 
-		function drawTable() {
+		function drawChart() {
 			var data = google.visualization.arrayToDataTable([
-				['Hospital', 'Pacientes'],
+				['Paciente', 'Edad'],
 				<?php
-					$query = "SELECT `id_hospital` as `Hospital`,
-                              		COUNT(`id_paciente`) as `Pacientes`
-                              FROM `tabla_hechos`
-                              GROUP BY `id_hospital` ";
+					$query = "SELECT DISTINCT a.id_paciente as `Paciente`,
+							b.edad as `Edad`
+							FROM `tabla_hechos` a, `dim_paciente` b
+							WHERE (a.id_paciente = b.id)";
 					$exec = mysqli_query($con, $query);
 					while($row = mysqli_fetch_array($exec)) {
-						echo "['".$row['Hospital']."',".$row['Pacientes']."],";
+						echo "['".$row['Paciente']."',".$row['Edad']."],";
 					}
 				?>
-			]);
+				]);
 
-			var table = new google.visualization.Table(document.getElementById('table_div'));
+			var options = {
+				title: 'Histogram of Ages',
+				legend: {position: 'Below'}
+			};
 
-			table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+			var chart = new google.visualization.Histogram(document.getElementById('HistogramChart'));
+
+			chart.draw(data, options);
 		}
 
 	</script>
@@ -43,7 +48,7 @@
 <body>
 
 <div class="container-fluid">
-    <div id="table_div" style="width: 100%; height: 500px;"></div>
+    <div id="HistogramChart" style="width: 100%; height: 500px; float:left;"></div>
 </div>
 
 </body>

@@ -1,27 +1,39 @@
 Apriori
 =======
 
-Minimum support: 0.95 (242 instances)
-Minimum metric <confidence>: 0.9
-Number of cycles performed: 1
+Minimum support: 0.35 (89 instances)
+Minimum metric <lift>: 1.3
+Number of cycles performed: 13
 
 Generated sets of large itemsets:
 
-Size of set of large itemsets L(1): 3
+Size of set of large itemsets L(1): 18
 
-Size of set of large itemsets L(2): 3
+Size of set of large itemsets L(2): 130
 
-Size of set of large itemsets L(3): 1
+Size of set of large itemsets L(3): 502
+
+Size of set of large itemsets L(4): 1115
+
+Size of set of large itemsets L(5): 1476
+
+Size of set of large itemsets L(6): 1153
+
+Size of set of large itemsets L(7): 497
+
+Size of set of large itemsets L(8): 102
+
+Size of set of large itemsets L(9): 6
 
 Best rules found:
 
- 1. c5=t 254 ==> c1=t 253    <conf:(1)> lift:(1) lev:(-0) [0] conv:(0.5)
- 2. c1=t 254 ==> c5=t 253    <conf:(1)> lift:(1) lev:(-0) [0] conv:(0.5)
- 3. c14=t 254 ==> c1=t 253    <conf:(1)> lift:(1) lev:(-0) [0] conv:(0.5)
- 4. c1=t 254 ==> c14=t 253    <conf:(1)> lift:(1) lev:(-0) [0] conv:(0.5)
- 5. c14=t 254 ==> c5=t 253    <conf:(1)> lift:(1) lev:(-0) [0] conv:(0.5)
- 6. c5=t 254 ==> c14=t 253    <conf:(1)> lift:(1) lev:(-0) [0] conv:(0.5)
- 7. c5=t c14=t 253 ==> c1=t 252    <conf:(1)> lift:(1) lev:(-0) [0] conv:(0.5)
- 8. c1=t c14=t 253 ==> c5=t 252    <conf:(1)> lift:(1) lev:(-0) [0] conv:(0.5)
- 9. c1=t c5=t 253 ==> c14=t 252    <conf:(1)> lift:(1) lev:(-0) [0] conv:(0.5)
-10. c14=t 254 ==> c1=t c5=t 252    <conf:(0.99)> lift:(1) lev:(-0) [0] conv:(0.66)
+ 1. c9=t c10=t 147 ==> c7=t c11=t 89    conf:(0.61) < lift:(1.37)> lev:(0.09) [23] conv:(1.39)
+ 2. c7=t c11=t 113 ==> c9=t c10=t 89    conf:(0.79) < lift:(1.37)> lev:(0.09) [23] conv:(1.91)
+ 3. c9=t c10=t 147 ==> c1=t c7=t c11=t 89    conf:(0.61) < lift:(1.37)> lev:(0.09) [23] conv:(1.39)
+ 4. c1=t c9=t c10=t 147 ==> c7=t c11=t 89    conf:(0.61) < lift:(1.37)> lev:(0.09) [23] conv:(1.39)
+ 5. c7=t c11=t 113 ==> c1=t c9=t c10=t 89    conf:(0.79) < lift:(1.37)> lev:(0.09) [23] conv:(1.91)
+ 6. c1=t c7=t c11=t 113 ==> c9=t c10=t 89    conf:(0.79) < lift:(1.37)> lev:(0.09) [23] conv:(1.91)
+ 7. c9=t c10=t 147 ==> c7=t c11=t c14=t 89    conf:(0.61) < lift:(1.37)> lev:(0.09) [23] conv:(1.39)
+ 8. c7=t c11=t 113 ==> c9=t c10=t c14=t 89    conf:(0.79) < lift:(1.37)> lev:(0.09) [23] conv:(1.91)
+ 9. c9=t c10=t c14=t 147 ==> c7=t c11=t 89    conf:(0.61) < lift:(1.37)> lev:(0.09) [23] conv:(1.39)
+10. c7=t c11=t c14=t 113 ==> c9=t c10=t 89    conf:(0.79) < lift:(1.37)> lev:(0.09) [23] conv:(1.91)

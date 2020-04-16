@@ -57,11 +57,14 @@
             <version>8.0.11</version>
         </dependency>
 
-        <!-- Thymeleaf para iniciar front-end con template -->
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>-->
+        <!-- ==== MACHINE LEARNING LIBRARIES ==== -->
+
+        <!-- WEKA -->
+        <dependency>
+            <groupId>nz.ac.waikato.cms.weka</groupId>
+            <artifactId>weka-stable</artifactId>
+            <version>3.8.0</version>
+        </dependency>
 
     </dependencies>
 

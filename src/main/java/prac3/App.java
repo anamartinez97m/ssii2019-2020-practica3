@@ -63,14 +63,10 @@ public class App {
         System.out.println(loader.getStructure()+" ...\n\n");
 
         // the Apriori alg.
+
         Apriori model = new Apriori();
-        //model.setOptions(new String[]{"-N 10", "-T 1", "-C 1.3"});
-        //model.setMetricType(1);
-        //System.out.println(model.getMetricType());
-
-        //model.setNumRules(10);
-        //model.setMinMetric(1.3);
-
+        model.setOptions(new String[]{"-N", "10", "-T", "1", "-C", "1.3"});
+    
         // build model
         model.buildAssociations(data);
         System.out.println(model);

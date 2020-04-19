@@ -2,6 +2,10 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/data/datos_filtrado_colaborativo_1.csv" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/data/datos_filtrado_colaborativo_2.csv" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/data/datos_filtrado_colaborativo_3.csv" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/data/datos_filtrado_colaborativo_4.csv" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/data/negativos.csv" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/data/positivos.csv" charset="UTF-8" />
     <file url="PROJECT" charset="windows-1252" />

@@ -207,6 +207,122 @@
 			chart.draw(data, options);
 		}
 
+		google.charts.load('current', {'packages':['table']});
+		google.setOnLoadCallback(drawTableBestMedsH1);
+
+		function drawTableBestMedsH1() {
+			var data = google.visualization.arrayToDataTable([
+				['Pacients', 'Med1', 'Med2', 'Med3'],
+				<?php
+					if(($gestor = fopen("bestMedsHospital1.txt", "r")) !== FALSE) {
+						while(($row = fgetcsv($gestor, ",")) !== FALSE) {
+							echo "[$row[0], $row[1], $row[2], $row[3]],";
+						}
+					}
+				?>
+				]);
+
+			var options = {
+				width: '100%',
+				height: '300px',
+				cssClassNames: {
+					headerRow: 'header-table'
+				},
+				sortColumn: 0
+			};
+
+			var chart = new google.visualization.Table(document.getElementById("tableBestMedsH1"));
+
+			chart.draw(data, options);
+		}
+
+		google.charts.load('current', {'packages':['table']});
+		google.setOnLoadCallback(drawTableBestMedsH2);
+
+		function drawTableBestMedsH2() {
+			var data = google.visualization.arrayToDataTable([
+				['Pacients', 'Med1', 'Med2', 'Med3'],
+				<?php
+					if(($gestor = fopen("bestMedsHospital2.txt", "r")) !== FALSE) {
+						while(($row = fgetcsv($gestor, ",")) !== FALSE) {
+							echo "[$row[0], $row[1], $row[2], $row[3]],";
+						}
+					}
+				?>
+				]);
+
+			var options = {
+				width: '100%',
+				height: '300px',
+				cssClassNames: {
+					headerRow: 'header-table'
+				},
+				sortColumn: 0
+			};
+
+			var chart = new google.visualization.Table(document.getElementById("tableBestMedsH2"));
+
+			chart.draw(data, options);
+		}
+
+		google.charts.load('current', {'packages':['table']});
+		google.setOnLoadCallback(drawTableBestMedsH3);
+
+		function drawTableBestMedsH3() {
+			var data = google.visualization.arrayToDataTable([
+				['Pacients', 'Med1', 'Med2', 'Med3'],
+				<?php
+					if(($gestor = fopen("bestMedsHospital3.txt", "r")) !== FALSE) {
+						while(($row = fgetcsv($gestor, ",")) !== FALSE) {
+							echo "[$row[0], $row[1], $row[2], $row[3]],";
+						}
+					}
+				?>
+				]);
+
+			var options = {
+				width: '100%',
+				height: '300px',
+				cssClassNames: {
+					headerRow: 'header-table'
+				},
+				sortColumn: 0
+			};
+
+			var chart = new google.visualization.Table(document.getElementById("tableBestMedsH3"));
+
+			chart.draw(data, options);
+		}
+
+		google.charts.load('current', {'packages':['table']});
+		google.setOnLoadCallback(drawTableBestMedsH4);
+
+		function drawTableBestMedsH4() {
+			var data = google.visualization.arrayToDataTable([
+				['Pacients', 'Med1', 'Med2', 'Med3'],
+				<?php
+					if(($gestor = fopen("bestMedsHospital4.txt", "r")) !== FALSE) {
+						while(($row = fgetcsv($gestor, ",")) !== FALSE) {
+							echo "[$row[0], $row[1], $row[2], $row[3]],";
+						}
+					}
+				?>
+				]);
+
+			var options = {
+				width: '100%',
+				height: '300px',
+				cssClassNames: {
+					headerRow: 'header-table'
+				},
+				sortColumn: 0
+			};
+
+			var chart = new google.visualization.Table(document.getElementById("tableBestMedsH4"));
+
+			chart.draw(data, options);
+		}
+
 	</script>
 
 </head>
@@ -269,6 +385,38 @@
 					<div class="col-sm-12 col-md-5">
 						<h3 class="title-chart">Numero de pacientes en la UCI con alguna/ninguna enfermedad</h3>
 						<div id="PieChart" style="width: 100%; height: 100%;"></div>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 40px;">
+			<div class="col-sm-12 col-md-12">
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-sm-12 col-md-5">
+						<h3 class="title-chart">Mejores medicinas para cada paciente del Hospital 1</h3>
+						<div id="tableBestMedsH1" style="width: 100%; height: 100%;"></div>
+					</div>
+					<div class="col-sm-12 col-md-5">
+						<h3 class="title-chart">Mejores medicinas para cada paciente del Hospital 2</h3>
+						<div id="tableBestMedsH2" style="width: 100%; height: 100%;"></div>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 40px;">
+			<div class="col-sm-12 col-md-12">
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-sm-12 col-md-5">
+						<h3 class="title-chart">Mejores medicinas para cada paciente del Hospital 3</h3>
+						<div id="tableBestMedsH3" style="width: 100%; height: 100%;"></div>
+					</div>
+					<div class="col-sm-12 col-md-5">
+						<h3 class="title-chart">Mejores medicinas para cada paciente del Hospital 4</h3>
+						<div id="tableBestMedsH4" style="width: 100%; height: 100%;"></div>
 					</div>
 					<div class="col-md-1"></div>
 				</div>

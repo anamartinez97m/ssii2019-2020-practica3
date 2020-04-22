@@ -47,7 +47,6 @@ public class ServicioTiempo {
                     break;
         }
         DimTiempo tiempo = repositorioTiempo.findByDiaAndMesAndAnioAndCuatrimestre(dia, mes, anio, cuatrimestre);
-        System.out.println("EL TIEMPO ENCONTRADO ES: " +tiempo);
         return tiempo;
     }
 

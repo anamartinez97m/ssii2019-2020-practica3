@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import prac3.entidades.*;
 import prac3.servicios.*;
 
+import java.io.FileWriter;
 import java.lang.String;
 
 import javax.annotation.PostConstruct;
@@ -30,7 +31,9 @@ public class ProcessData {
 
     @PostConstruct
     public void loadData(){
+        System.out.println("===============================");
         System.out.println("PROCEDIENDO A LA CARGA DE DATOS");
+        System.out.println("===============================\n");
         processDimLugar();
         processDimTiempo();
 
@@ -42,11 +45,26 @@ public class ProcessData {
             processTablaHechos("H"+i);
         }
 
+        //Consultas a la base de datos
+        List<TablaHechos> pacientesUCI = servicioHechos.getPacientesByUCI();
+        List<TablaHechos> pacientesFallecidos = servicioHechos.getPacientesByFallecido();
+        List<TablaHechos> pacientesResto = servicioHechos.getPacientesNoFallecidosNoUCI();
+
+        System.out.println("Exportando datos a pacientesUCI.csv...");
+        crearArchivoCSV("src/main/resources/data/pacientesUCI.csv", ";", pacientesUCI);
+
+        System.out.println("Exportando datos a pacientesFallecidos.csv...");
+        crearArchivoCSV("src/main/resources/data/pacientesFallecidos.csv", ";", pacientesFallecidos);
+
+        System.out.println("Exportando datos a pacientesResto.csv...");
+        crearArchivoCSV("src/main/resources/data/pacientesResto.csv", ";", pacientesResto);
+
     }
 
     public void processDimLugar() {
-
         System.out.println("CARGANDO DATOS DE dimLUGAR.csv...");
+        int i = 0;
+        printProgBar(i);
 
         try {
             FileReader fr = new FileReader("src/main/resources/data/dimLUGAR.csv");
@@ -78,18 +96,22 @@ public class ProcessData {
 
                 //Lee la siguiente linea
                 line = br.readLine();
+
+                i = i+9;
+                printProgBar(i);
             }
         } catch (IOException e) {
             System.err.println("Hubo un problema con el fichero dimLUGAR.csv");
         }
 
-        System.out.println("DATOS DE dimLUGAR.csv CARGADOS CON EXITO.");
-
+        printProgBar(100);
+        System.out.println("\nDATOS DE dimLUGAR.csv CARGADOS CON EXITO.\n");
     }
 
     public void processDimTiempo() {
-
         System.out.println("CARGANDO DATOS DE dimTIEMPO.csv...");
+        int i = 0;
+        printProgBar(i);
 
         try {
             FileReader fr = new FileReader("src/main/resources/data/dimTIEMPO.csv");
@@ -126,6 +148,9 @@ public class ProcessData {
 
                 //Lee la siguiente linea
                 line = br.readLine();
+
+
+                printProgBar(i++/15);
             }
         } catch (IOException e) {
             System.err.println("Hubo un problema con el fichero dimTIEMPO.csv");
@@ -134,12 +159,14 @@ public class ProcessData {
             System.err.println(pe);
         }
 
-        System.out.println("DATOS DE dimTIEMPO.csv CARGADOS CON EXITO.");
-
+        printProgBar(100);
+        System.out.println("\nDATOS DE dimTIEMPO.csv CARGADOS CON EXITO.\n");
     }
 
     public void processDimPaciente(String file){
-        System.out.println("CARGANDO DATOS DE "+file+".csv");
+        System.out.println("CARGANDO DATOS DE "+file+".csv...");
+        int i = 0;
+        printProgBar(i);
 
         //Carga de datos de Pi.csv
         try {
@@ -183,16 +210,20 @@ public class ProcessData {
                 //Lee la siguiente linea
                 line = br.readLine();
 
+                printProgBar(i++);
             }
         } catch (IOException e) {
             System.err.println("Hubo un error con el fichero "+file+".csv");
         }
 
-        System.out.println("DATOS DE "+file+".csv CARGADOS CON EXITO.");
+        printProgBar(100);
+        System.out.println("\nDATOS DE "+file+".csv CARGADOS CON EXITO.\n");
     }
 
     public void processTablaHechos(String file) {
-        System.out.println("CARGANDO DATOS DE "+file+".csv");
+        System.out.println("CARGANDO DATOS DE "+file+".csv...");
+        int i = 0;
+        printProgBar(i);
 
         List<DimPaciente> pacienteList = servicioPaciente.getPaciente();
         Iterator<DimPaciente> it = pacienteList.iterator();
@@ -215,7 +246,7 @@ public class ProcessData {
                 DimPaciente paciente_id = asignarIdPaciente(Integer.parseInt(cadena[1]), it.next());
                 DimHospital hospital_id = servicioHospital.getHospitalById(file);
                 DimTiempo fechaIngreso_id = servicioTiempo.getTiempoByDiaAndMesAndAnioAndCuatrimestre(cadena[2]);
-                System.out.println(fechaIngreso_id);
+
                 int duracion = Integer.parseInt(cadena[3]);
                 boolean UCI = convertirDatoBooleano(cadena[4]);
                 boolean fallecido = convertirDatoBooleano(cadena[5]);
@@ -233,13 +264,63 @@ public class ProcessData {
 
                 //Lee la siguiente linea
                 line = br.readLine();
+
+                printProgBar(i++);
             }
 
         } catch (IOException e) {
             System.err.println("Hubo un error con el fichero "+file+".csv");
         }
 
-        System.out.println("DATOS DE "+file+".csv CARGADOS CON EXITO.");
+        printProgBar(100);
+        System.out.println("\nDATOS DE "+file+".csv CARGADOS CON EXITO.\n");
+    }
+
+    private void crearArchivoCSV(String ruta, String separador, List<TablaHechos> pacientes) {
+        int i = 0;
+        printProgBar(i);
+
+        try {
+            FileWriter fw = new FileWriter(ruta);
+
+            // Escribir cabecera de la tabla
+            fw.append("ID").append(separador);
+            fw.append("paciente_id").append(separador);
+            fw.append("hospital_id").append(separador);
+            fw.append("fechaIngreso_id").append(separador);
+            fw.append("duracion").append(separador);
+            fw.append("UCI").append(separador);
+            fw.append("fallecido").append(separador);
+            fw.append("tratamiento").append(separador);
+            fw.append("\n");
+
+
+            for(TablaHechos th: pacientes) {
+                fw.append(th.getId()).append(separador);
+                fw.append(""+th.getPaciente_id().getIdPaciente()).append(separador);
+                fw.append(th.getHospital_id().getIdHospital()).append(separador);
+                fw.append(""+th.getFechaIngreso_id().getFecha()).append(separador);
+                fw.append(""+th.getDuracion()).append(separador);
+                fw.append(""+th.isUCI()).append(separador);
+                fw.append(""+th.isFallecido()).append(separador);
+                fw.append(""+th.getTratamiento());
+                fw.append("\n");
+
+                fw.flush();
+
+                i = i+(i/pacientes.size()*100);
+                printProgBar(i);
+            }
+
+            fw.close();
+
+            printProgBar(100);
+            System.out.println("\nDatos exportados correctamente en: "+ruta);
+        } catch (IOException e) {
+            System.err.println("Error en la creacion del fichero CSV de la ruta: "+ruta);
+            e.printStackTrace();
+        }
+
     }
 
     public DimPaciente asignarIdPaciente(int id, DimPaciente p) {
@@ -270,5 +351,27 @@ public class ProcessData {
         } else {
             return "dd/MM/yy";
         }
+    }
+
+    /* Codigo utilizado de:
+        https://nakkaya.com/2009/11/08/command-line-progress-bar/
+
+       Todos los creditos reservados a esta pagina.
+     */
+    public static void printProgBar(int percent){
+        StringBuilder bar = new StringBuilder("[");
+
+        for(int i = 0; i < 50; i++){
+            if( i < (percent/2)){
+                bar.append("=");
+            }else if( i == (percent/2)){
+                bar.append(">");
+            }else{
+                bar.append(" ");
+            }
+        }
+
+        bar.append("]   " + percent + "%     ");
+        System.out.print("\r" + bar.toString());
     }
 }

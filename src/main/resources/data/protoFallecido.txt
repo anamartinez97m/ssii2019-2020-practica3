@@ -1,0 +1,22 @@
+Atributo de los datos:
+------------------@relation pacientesFallecidos
+
+@attribute ID numeric
+@attribute paciente_id numeric
+@attribute hospital_id {H4,H3,H2}
+@attribute fechaIngreso_id {2019-06-16,2019-12-07,2019-10-18,2019-09-29,2019-09-03,2019-06-02,2019-12-01,2019-11-07,2019-10-08,2019-06-12,2019-07-14,2019-08-26,2019-06-24,2020-01-31,2019-07-02,2019-10-02,2019-07-06}
+@attribute duracion numeric
+@attribute UCI {false,true}
+@attribute fallecido {true}
+@attribute tratamiento numeric
+
+@data
+
+
+-----------RESULTADO------------
+Cluster 01 tamaño: 7.0
+Prueba: 38.285714,523261,H3,2019-06-16,19,false,true,1.428571
+Cluster 11 tamaño: 5.0
+Prueba: 57.4,644289.6,H3,2019-12-07,12.4,false,true,2.6
+Cluster 21 tamaño: 6.0
+Prueba: 63.833333,453898.833333,H3,2019-09-29,15,true,true,1.333333

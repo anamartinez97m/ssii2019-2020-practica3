@@ -1,7 +1,4 @@
 package prac3.entidades;
-
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 @Entity

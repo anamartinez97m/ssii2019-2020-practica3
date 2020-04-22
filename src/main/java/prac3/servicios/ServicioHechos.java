@@ -2,7 +2,6 @@ package prac3.servicios;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import prac3.entidades.DimPaciente;
 import prac3.entidades.TablaHechos;
 import prac3.repositorios.RepositorioHechos;
 
@@ -16,6 +15,18 @@ public class ServicioHechos {
 
     public List<TablaHechos> getHechos() {
         return (List<TablaHechos>) repositorioHechos.findAll();
+    }
+
+    public List<TablaHechos> getPacientesByUCI() {
+        return repositorioHechos.findByUCI(true);
+    }
+
+    public List<TablaHechos> getPacientesByFallecido() {
+        return repositorioHechos.findByFallecido(true);
+    }
+
+    public List<TablaHechos> getPacientesNoFallecidosNoUCI(){
+        return repositorioHechos.findByUCIAndFallecido(false, false);
     }
 
     public void guardarHecho(TablaHechos th) {

@@ -156,7 +156,7 @@ public class App {
         // Escribir los prototipos de cada grupo (centroides)
         Instances centroids = kMeans.getClusterCentroids();
 
-        File txt = new File("src/main/resources/data/"+nameTXT);
+        File txt = new File("src/main/resources/Apartado6-TXTs/"+nameTXT);
         FileWriter fw = new FileWriter(txt);
         BufferedWriter bw = new BufferedWriter(fw);
 

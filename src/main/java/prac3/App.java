@@ -262,10 +262,10 @@ public class App {
 
     private static void generateBestMedsByPacient() throws Exception {
         BufferedReader csvReader = new BufferedReader(new FileReader("src/main/resources/data/temporalFilledWithRecommendations.csv"));
-        FileWriter writer1 = new FileWriter("src/main/resources/data/bestMedsHospital1.txt");
-        FileWriter writer2 = new FileWriter("src/main/resources/data/bestMedsHospital2.txt");
-        FileWriter writer3 = new FileWriter("src/main/resources/data/bestMedsHospital3.txt");
-        FileWriter writer4 = new FileWriter("src/main/resources/data/bestMedsHospital4.txt");
+        FileWriter writer1 = new FileWriter("src/main/resources/charts/bestMedsHospital1.txt");
+        FileWriter writer2 = new FileWriter("src/main/resources/charts/bestMedsHospital2.txt");
+        FileWriter writer3 = new FileWriter("src/main/resources/charts/bestMedsHospital3.txt");
+        FileWriter writer4 = new FileWriter("src/main/resources/charts/bestMedsHospital4.txt");
         HashMap<Integer, ArrayList<Float>> mapPacientsMeds = new HashMap<>();
         int rowNumber = 1;
         int numPacient = 1;

@@ -1,5 +1,5 @@
 <?php
-	$con = mysqli_connect('localhost', 'newuser', 'URJC2019!', 'practica3', '3306');
+	$con = mysqli_connect('localhost', 'newuser', 'URJC2019!', 'test', '3306');
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +36,7 @@
 
 	<script type="text/javascript">
 		google.charts.load("current", {packages:["table"]});
-		google.setOnLoadCallback(drawTable);
+		google.charts.setOnLoadCallback(drawTable);
 
 		function drawTable() {
 			var data = google.visualization.arrayToDataTable([
@@ -70,7 +70,7 @@
 		}
 
 		google.charts.load('current', {'packages':['corechart']});
-		google.setOnLoadCallback(drawBarChartUCI);
+		google.charts.setOnLoadCallback(drawBarChartUCI);
 
 		function drawBarChartUCI() {
 			var data = google.visualization.arrayToDataTable([
@@ -102,7 +102,7 @@
 		}
 
 		google.charts.load('current', {'packages':['corechart']});
-		google.setOnLoadCallback(drawBarChartDeaths);
+		google.charts.setOnLoadCallback(drawBarChartDeaths);
 
 		function drawBarChartDeaths() {
 			var data = google.visualization.arrayToDataTable([
@@ -134,7 +134,7 @@
 		}
 
 		google.charts.load("current", {packages:["corechart"]});
-		google.setOnLoadCallback(drawHistogramChart);
+		google.charts.setOnLoadCallback(drawHistogramChart);
 
 		function drawHistogramChart() {
 			var data = google.visualization.arrayToDataTable([
@@ -162,7 +162,7 @@
 		}
 
 		google.charts.load('current', {'packages':['corechart']});
-		google.setOnLoadCallback(drawPieChart);
+		google.charts.setOnLoadCallback(drawPieChart);
 
 		function drawPieChart() {
 			var data = google.visualization.arrayToDataTable([
@@ -208,7 +208,7 @@
 		}
 
 		google.charts.load('current', {'packages':['table']});
-		google.setOnLoadCallback(drawTableBestMedsH1);
+		google.charts.setOnLoadCallback(drawTableBestMedsH1);
 
 		function drawTableBestMedsH1() {
 			var data = google.visualization.arrayToDataTable([
@@ -237,7 +237,7 @@
 		}
 
 		google.charts.load('current', {'packages':['table']});
-		google.setOnLoadCallback(drawTableBestMedsH2);
+		google.charts.setOnLoadCallback(drawTableBestMedsH2);
 
 		function drawTableBestMedsH2() {
 			var data = google.visualization.arrayToDataTable([
@@ -266,7 +266,7 @@
 		}
 
 		google.charts.load('current', {'packages':['table']});
-		google.setOnLoadCallback(drawTableBestMedsH3);
+		google.charts.setOnLoadCallback(drawTableBestMedsH3);
 
 		function drawTableBestMedsH3() {
 			var data = google.visualization.arrayToDataTable([
@@ -295,7 +295,7 @@
 		}
 
 		google.charts.load('current', {'packages':['table']});
-		google.setOnLoadCallback(drawTableBestMedsH4);
+		google.charts.setOnLoadCallback(drawTableBestMedsH4);
 
 		function drawTableBestMedsH4() {
 			var data = google.visualization.arrayToDataTable([
